@@ -3,9 +3,13 @@ from df_cart.models import *
 
 # Create your views here.
 def cart_count(request):
-    carts = CartInfo.objects.filter(user_id=request.session['user_id'])
-    counts = carts.count()
-    return counts
+    if request.session. has_key('user_id'):
+        carts = CartInfo.objects.filter(user_id=request.session['user_id'])
+        counts = carts.count()
+        return counts
+    else:
+        counts = 0
+        return counts
 
 
 from haystack.views import SearchView

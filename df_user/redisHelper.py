@@ -12,7 +12,7 @@ class redisHelper():
 
 
 # if __name__ == '__main__':
-#     re = redisHelper('192.168.147.122', 6379)
+#     re = redisHelper('172.27.0.6', 6379)
 #     judge = re.get('py10')
 #     print(judge)
 

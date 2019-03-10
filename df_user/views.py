@@ -64,11 +64,12 @@ def register_handle(request):
     upwd = post.get('pwd')
     upwd2 = post.get('cpwd')
     uemail = post.get('email')
-    code1 = post.get('code1')
+    code1 = post.get('code1').lower()
     code2 = request.session['code']
+    code3 = code2.lower()
 
     #判断验证码是否正确
-    if code1 != code2:
+    if code1 != code3:
 
         return redirect('/user/register')
 
@@ -142,7 +143,7 @@ def login_handle(request):
 
 
 
-    r = redisHelper('192.168.147.122', 6379)
+    r = redisHelper('172.27.0.6', 6379)
 
     if r.get(uname)==None:
 

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'jmf)zd_(!s%sacpoc_-t*g2xw*w=&+#gb^0nqbhpkg@f0+im5r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,7 +84,10 @@ WSGI_APPLICATION = 'graduation_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
+        #学校里的ip
+	'HOST': '10.33.8.165',
+	#本地mysql
+	'HOST': 'localhost',
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': '123456',
@@ -147,7 +150,7 @@ TINYMCE_DEFAULT_CONFIG = {
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     }
 }
@@ -156,7 +159,8 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE=12
 
-
+#添加默认的静态目录[手机使用]
+STATIC_ROOT = os.path.join(BASE_DIR, "static_all")
 
 
 
